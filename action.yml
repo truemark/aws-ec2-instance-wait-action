@@ -1,11 +1,14 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'AWS EC2 Wait Action'
+description: 'GitHub action which waits for an EC2 instance to be running and pass status checks'
+author: 'TrueMark'
 inputs:
-  milliseconds: # change this
+  instance-ids:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'Instance IDs to wait for'
+  timeout-ms:
+    required: false
+    description: 'Timeout in milliseconds'
+    default: '600000'
 runs:
   using: 'node16'
   main: 'dist/index.js'
