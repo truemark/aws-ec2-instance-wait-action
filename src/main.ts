@@ -1,6 +1,5 @@
 import * as core from '@actions/core'
 import {DescribeInstanceStatusCommand, EC2Client} from '@aws-sdk/client-ec2'
-import {info} from '@actions/core'
 import {loadConfig} from './config'
 
 async function sleep(ms: number): Promise<void> {
@@ -10,7 +9,7 @@ async function sleep(ms: number): Promise<void> {
 async function run(): Promise<void> {
   try {
     const config = loadConfig()
-    info(`Waiting for instances ${config.instanceIds} to be ready`)
+    console.log(`Waiting for instances ${config.instanceIds} to be ready`)
     const ec2Client = new EC2Client({region: config.region})
     const command = new DescribeInstanceStatusCommand({
       InstanceIds: config.instanceIds
@@ -33,7 +32,7 @@ async function run(): Promise<void> {
       ).reduce((acc, cur) => acc && cur, true)
       await sleep(5000)
     } while (!status)
-    info(`Instances ${config.instanceIds} are ready`)
+    console.log(`Instances ${config.instanceIds} are ready`)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
