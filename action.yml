@@ -9,6 +9,9 @@ inputs:
     required: false
     description: 'Timeout in milliseconds'
     default: '600000'
+  region:
+    required: true
+    description: 'AWS region to use'
 runs:
   using: 'node16'
   main: 'dist/index.js'
