@@ -19,9 +19,12 @@ export async function waitForInstances(ec2Client: EC2Client, instanceIds: string
     }
     let output = await ec2Client.send(command)
     if (output.InstanceStatuses === undefined || output.InstanceStatuses.length === 0) {
-      // sometimes AWS returns an empty list, so we need to retry
-      await sleep(3000)
-      output = await ec2Client.send(command)
+      let count = 0
+      while (count < 3) {
+        count++
+        await sleep(count * 3000)
+        output = await ec2Client.send(command)
+      }
       if (output.InstanceStatuses === undefined || output.InstanceStatuses.length === 0) {
         throw new Error('No instances found')
       }
