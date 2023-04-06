@@ -4,7 +4,7 @@ author: 'TrueMark'
 inputs:
   instance-ids:
     required: true
-    description: 'Instance IDs to wait for'
+    description: 'Comma separated list of instance IDs to wait for'
   timeout-ms:
     required: false
     description: 'Timeout in milliseconds'

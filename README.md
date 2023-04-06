@@ -1,16 +1,32 @@
-<p align="center">
-  <a href="https://github.com/truemark/aws-ec2-wait-action"><img alt="typescript-action status" src="https://github.com/truemark/aws-ec2-wait-action/workflows/build-test/badge.svg"></a>
-</p>
-
 # AWS EC2 Wait Action
+
+[![LICENSE](https://img.shields.io/badge/license-BSD3-green)](LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/truemark/aws-ec2-wait-instance-action)](https://github.com/truemark/aws-ec2-describe-wait-action/releases)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/truemark/aws-ec2-wait-instance-action)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/truemark/aws-ec2-wait-instance-action)
 
 This action will wait for an EC2 instance to reach a running state and pass status checks.
 
 ## Example
 
 ```yml
-
+      - name: Wait for instances
+        id: ec2-wait
+        uses: truemark/aws-ec2-instance-wait-action@v2
+        with:
+          instance-ids: ${{ steps.ec2-arm64.outputs.instance-id }},${{ steps.ec2-amd64.outputs.instance-id }}
+          region: "us-east-2"
+          timeout-ms: "600000"
 ```
+
+## Inputs
+
+|Name | Type | Required | Description                                                                                               |
+|-----|------|----------|-----------------------------------------------------------------------------------------------------------|
+|instance-ids | string | Yes | Comma separated list of instance IDs to wait for                                                          |
+|timeout-ms | string | No | Timeout in milliseconds to wait for the instance to reach a running state. Default is 600000 (10 minutes) |
+|region | string | Yes | AWS region to use                                                                                         |
+
 
 ## Development
 
