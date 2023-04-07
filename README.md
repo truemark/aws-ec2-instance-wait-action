@@ -4,6 +4,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/truemark/aws-ec2-instance-wait-action)](https://github.com/truemark/aws-ec2-instance-wait-action/releases)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/truemark/aws-ec2-instance-wait-action)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/truemark/aws-ec2-instance-wait-action)
+![build-test](https://github.com/truemark/aws-ec2-instance-wait-action/workflows/build-test/badge.svg)
 
 This action will wait for an EC2 instance to reach a running state and pass status checks.
 
