@@ -1,6 +1,9 @@
 name: 'AWS EC2 Wait Action'
 description: 'GitHub action which waits for an EC2 instance to be running and pass status checks'
 author: 'TrueMark'
+branding:
+  icon: 'check-circle'
+  color: 'red'
 inputs:
   instance-ids:
     required: true
