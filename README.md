@@ -13,7 +13,7 @@ This action will wait for an EC2 instance to reach a running state and pass stat
 ```yml
       - name: Wait for instances
         id: ec2-wait
-        uses: truemark/aws-ec2-instance-wait-action@v2
+        uses: truemark/aws-ec2-instance-wait-action@v3
         with:
           instance-ids: ${{ steps.ec2-arm64.outputs.instance-id }},${{ steps.ec2-amd64.outputs.instance-id }}
           region: "us-east-2"
@@ -22,11 +22,11 @@ This action will wait for an EC2 instance to reach a running state and pass stat
 
 ## Inputs
 
-|Name | Type | Required | Description                                                                                               |
-|-----|------|----------|-----------------------------------------------------------------------------------------------------------|
-|instance-ids | string | Yes | Comma separated list of instance IDs to wait for                                                          |
-|timeout-ms | string | No | Timeout in milliseconds to wait for the instance to reach a running state. Default is 600000 (10 minutes) |
-|region | string | Yes | AWS region to use                                                                                         |
+| Name         | Type   | Required | Description                                                                                                |
+|--------------|--------|----------|------------------------------------------------------------------------------------------------------------|
+| instance-ids | string | Yes      | Comma separated list of instance IDs to wait for                                                           |
+| timeout-ms   | string | No       | Timeout in milliseconds to wait for the instance to reach a running state. Default is 600000 (10 minutes)  |
+| region       | string | Yes      | AWS region to use                                                                                          |
 
 
 ## Development
